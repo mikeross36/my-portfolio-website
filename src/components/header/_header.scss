@@ -1,0 +1,165 @@
+.header {
+    position: fixed;
+    width: 100%;
+    padding: 1rem;
+    z-index: 10;
+}
+
+.menu-btn {
+    position: absolute;
+    top: 2.5rem;
+    right: 2rem;
+    height: 2rem;
+    width: 2.5rem;
+    cursor: pointer;
+    transition: transform .5s ease-in-out;
+    z-index: 12;
+    background: transparent;
+    border: transparent;
+
+    @include breakpoint-up(medium){
+        visibility: hidden;
+    }
+}
+
+.menu-btn-burger {
+    position: absolute;
+    right: 0;
+    top: .6rem;
+    width: 2.7rem;
+    height: .6rem;
+    background: $mainWhite;
+    border: .1rem solid $mainBlack;
+    transition: transform .5s ease-in-out;
+
+    &.open {
+        transform: rotate(720deg);
+        background: transparent;
+        border: none;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: -.85rem;
+        right: 0;
+        width: 2.5rem;
+        height: .6rem;
+        background: $mainWhite;
+        border: .1rem solid $mainBlack;
+        transition: transform .5s ease-in-out;
+    }
+
+    &.open::before {
+        transform: rotate(45deg) translate(.3925rem, .5rem);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: .65rem;
+        right: 0;
+        width: 2.5rem;
+        height: .6rem;
+        background: $mainWhite;
+        border: .1rem solid $mainBlack;
+        transition: transform .5s ease-in-out;
+    }
+
+    &.open::after {
+        transform: rotate(-45deg) translate(.5rem, -.625rem);
+    }
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: .98;
+    visibility: hidden;
+
+    &.open {
+        visibility: visible;
+    }
+
+    @include breakpoint-up(medium){
+        visibility: visible;
+        top: 5%;
+    }
+}
+
+.menu-nav {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    background: rgba($mainBlack, .6);
+    height: 100vh;
+    overflow: hidden;
+    transform: translateY(-100vh);
+    transition: transform .5s ease-in-out;
+
+    &.open {
+        transform: translateY(0);
+    }
+
+    @include breakpoint-up(medium){
+        display: block;
+        transform: translateY(0);
+        height: 20vh;
+        text-align: center;
+        margin-right: 1rem;
+        opacity: 1;
+        background: none;
+    }
+}
+
+.menu-nav-item {
+    // transform: matrix3d(0.642, 0, 0.766, 0, 0, 1, 0, 0, -0.766, 0, 0.642, 0, 0, 0, 0, 1);
+    transform: translate3d(37.5rem, 0, 0) skew(10deg, -70deg);
+    transition: transform .5s ease-in-out;
+
+    @for $item from 1 to 5 {
+        &:nth-child(#{$item}){
+            transition-delay: $item * .1s;
+        }
+    }
+
+    &.open {
+        transform: translate3d(0, 0, 0);
+        text-align: center;
+        z-index: 10;
+    }
+
+    &.active {
+        color: $activeClr;
+    }
+
+    @include breakpoint-up(medium){
+        display: inline;
+        padding-left: 2.5rem;
+    }
+
+    @include breakpoint-up(large){
+        margin: 0 2.5rem;
+    }
+}
+
+.menu-nav-link {
+    display: inline-block;
+    padding: 2.5rem 0;
+    font-size: 1.9rem;
+    font-weight: bolder;
+    text-transform: uppercase;
+    color: $mainWhite;
+    transition: color .5s ease-in-out;
+
+    @include breakpoint-up(medium){
+        font-size: 1.7rem;
+    }
+
+    &:hover {
+        color: $activeClr;
+    }
+}

@@ -1,0 +1,34 @@
+.social-icons {
+    position: absolute;
+    top: 5%;
+    left: 1.5rem;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all .5s ease;
+
+    @include breakpoint-up(medium){
+        left: 5rem;
+        top: 25%;
+    }
+
+    & a {
+        margin-bottom: 2rem;
+
+        & span {
+            color: $activeClr;
+            font-size: 2.5rem;
+            transition: all .5s linear;
+            filter: drop-shadow(.1rem -.1rem .1rem black);
+        
+            &:hover {
+                color: $mainWhite;
+            }
+        
+            @include breakpoint-up(large){
+                font-size: 3rem;
+            }
+        }
+    }
+}

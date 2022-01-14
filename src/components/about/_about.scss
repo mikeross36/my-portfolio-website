@@ -1,0 +1,133 @@
+.about-wrapper {
+    width: 100%;
+    height: 100%;
+
+    @include breakpoint-up(large){
+        margin: 5rem;
+        padding: 5rem;
+    }
+}
+
+.about {
+    padding: 2rem;
+
+    @include breakpoint-up(large){
+        padding: 0;
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: 40% 1fr;
+    }
+}
+
+.about-image {
+    background: url(../../images/portfolio-1.jpg) top/cover;
+    height: 60vh;
+    width: 100%;
+    max-width: 85vw;
+    box-shadow: $boxShadow;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    @include breakpoint-up(medium){
+        height: 70vh;
+        max-width: 80vw;
+        margin: 0 auto;
+    }
+}
+
+.about-title {
+    width: 100%;
+    text-align: right;
+    padding: 1rem;
+
+    & h2 {
+        color: $mainWhite;
+        text-transform: uppercase;
+        text-shadow: $textShadow;
+        letter-spacing: 1px;
+    
+        @include breakpoint-up(large){
+            letter-spacing: 2px;
+        }
+    }
+}
+
+.resume {
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+    color: $mainWhite;
+    text-shadow: $textShadow;
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 120%;
+        height: 120%;
+        top: 0;
+        left: 0;
+        background-color: $activeClr;
+        clip-path: polygon(2% 7%, 85% 15%, 80% 90%, 0% 100%);
+        z-index: -999;
+    }
+
+    & h2 {
+        color: $activeClr;
+    }
+
+    @include breakpoint-up(medium){
+        width: 70vw;
+        margin: 0 auto;
+        color: $mainWhite;
+        
+        &::after {
+            content: "";
+            position: absolute;
+            width: 130%;
+            height: 120%;
+            top: 0;
+            left: 0;
+            background-color: $activeClr;
+            clip-path: polygon(0% 10%, 80% 25%, 80% 90%, 0% 100%);
+            z-index: -999;
+        }
+    }
+
+    @include breakpoint-up(large){
+        &::after {
+            content: "";
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            top: 0;
+            left: 0;
+            background-color: $activeClr;
+            clip-path: polygon(5% 5%, 80% 15%, 80% 90%, 0% 100%);
+            z-index: -999;
+        }
+    }
+
+    &-title {
+        line-height: 2;
+        text-align: center;
+    }
+
+    @include breakpoint-up(large){
+        width: 45vw;
+        height: 60vh;
+    }
+}
+
+.res-qual {
+    margin: 0 auto;
+    line-height: 1.6;
+
+    @include breakpoint-up(large){
+        font-size: 1.1rem;
+        width: 80%;
+    }
+}
